@@ -1,0 +1,29 @@
+<ion-card color="dark" class="animated fadeIn fast" >
+  <ion-card-header>
+    <ion-card-title (click)="abrirNoticia()" class="titulo-noticia" >
+      {{ noticia.title }}
+    </ion-card-title>
+
+    <div class="noticia-more">
+      <ion-button fill="clear" (click)="mostarOpciones()">
+        <ion-icon slot="icon-only"
+                  name="ellipsis-vertical-outline"></ion-icon>
+        <!-- <ion-icon name="ellipsis-vertical-circle-outline"></ion-icon> -->
+      </ion-button>
+    </div>
+    
+    <ion-card-subtitle class="sub-date">
+      <!-- <span class="text-primary">{{ idx+1 }}. </span> -->
+      <span class="noticia-source-name">{{ noticia.publishedAt | date:'MMM d, y, h:mm:ss a' }} - {{ noticia.source.name }}</span>
+    </ion-card-subtitle>
+  </ion-card-header>
+
+  <ion-img *ngIf="noticia.urlToImage"
+           [src]="noticia.urlToImage"
+           (click)="abrirNoticia()">
+  </ion-img>
+
+  <ion-card-content>
+    <p>{{ noticia.description }}</p>
+  </ion-card-content>
+</ion-card>
